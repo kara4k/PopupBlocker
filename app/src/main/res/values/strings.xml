@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">PopupBlocker</string>
+    <string name="service_description">Popup Blocker is a service that helps to close annoying
+        dialog windows automatically</string>
+</resources>
