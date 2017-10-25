@@ -1,11 +1,7 @@
 package com.kara4k.popupblocker.di.modules;
 
 import com.kara4k.popupblocker.di.scopes.PerActivity;
-import com.kara4k.popupblocker.model.DaoMaster;
-import com.kara4k.popupblocker.model.DaoSession;
-import com.kara4k.popupblocker.view.IMainView;
-
-import org.greenrobot.greendao.database.Database;
+import com.kara4k.popupblocker.view.IPackagesView;
 
 import dagger.Module;
 import dagger.Provides;
@@ -13,21 +9,17 @@ import dagger.Provides;
 @Module
 public class PackagesModule {
 
-    IMainView mMainView;
+    IPackagesView mMainView;
 
-    public PackagesModule(IMainView mainView) {
+    public PackagesModule(IPackagesView mainView) {
         mMainView = mainView;
     }
 
     @PerActivity
     @Provides
-    IMainView provideView(){
+    IPackagesView provideView(){
         return mMainView;
     }
 
-    @PerActivity
-    @Provides
-    DaoSession provideDaoSession(Database database) {
-       return new DaoMaster(database).newSession();
-    }
+
 }

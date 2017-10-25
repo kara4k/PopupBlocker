@@ -3,6 +3,7 @@ package com.kara4k.popupblocker.di.modules;
 import android.content.Context;
 
 import com.kara4k.popupblocker.model.DaoMaster;
+import com.kara4k.popupblocker.model.DaoSession;
 
 import org.greenrobot.greendao.database.Database;
 
@@ -28,10 +29,13 @@ public class AppModule {
 
     @Provides
     @Singleton
-    Database provideDatabase(Context context) {
+    DaoSession provideDaoSession(Context context) {
         DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(context, "database");
-        return helper.getWritableDb();
+        Database db = helper.getWritableDb();
+        return new DaoMaster(db).newSession();
     }
 
-
 }
+
+
+

@@ -5,7 +5,7 @@ import com.kara4k.popupblocker.model.Package;
 
 import java.util.List;
 
-public interface IMainView {
+public interface IPackagesView {
 
     void setList(List<Package> packages);
 

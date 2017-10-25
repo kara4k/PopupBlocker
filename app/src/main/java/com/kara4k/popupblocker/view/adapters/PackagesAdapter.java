@@ -1,4 +1,4 @@
-package com.kara4k.popupblocker.view.Adapters;
+package com.kara4k.popupblocker.view.adapters;
 
 
 import android.graphics.Color;
@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.kara4k.popupblocker.R;
-import com.kara4k.popupblocker.presenter.MainPresenter;
+import com.kara4k.popupblocker.presenter.PackagesPresenter;
 import com.kara4k.popupblocker.model.Package;
 
 import java.util.List;
@@ -19,20 +19,20 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class Adapter extends RecyclerView.Adapter<Adapter.Holder> {
+public class PackagesAdapter extends RecyclerView.Adapter<PackagesAdapter.Holder> {
 
-    MainPresenter mPresenter;
+    PackagesPresenter mPresenter;
 
     private List<Package> mList;
 
-    public Adapter(MainPresenter mainPresenter) {
-        mPresenter = mainPresenter;
+    public PackagesAdapter(PackagesPresenter packagesPresenter) {
+        mPresenter = packagesPresenter;
     }
 
     @Override
     public Holder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.package_item, parent, false);
+                .inflate(R.layout.package_holder, parent, false);
         return new Holder(view);
     }
 

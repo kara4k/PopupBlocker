@@ -3,8 +3,7 @@ package com.kara4k.popupblocker.di;
 import android.content.Context;
 
 import com.kara4k.popupblocker.di.modules.AppModule;
-
-import org.greenrobot.greendao.database.Database;
+import com.kara4k.popupblocker.model.DaoSession;
 
 import javax.inject.Singleton;
 
@@ -17,5 +16,5 @@ public interface AppComponent {
 
     Context shareContext();
 
-    Database shareDatabase();
+    DaoSession shareDaoSession();
 }

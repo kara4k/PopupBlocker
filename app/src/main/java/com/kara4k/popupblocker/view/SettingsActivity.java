@@ -1,8 +1,6 @@
 package com.kara4k.popupblocker.view;
 
 
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -11,24 +9,19 @@ import com.kara4k.popupblocker.R;
 import com.kara4k.popupblocker.di.DaggerPackagesComponent;
 import com.kara4k.popupblocker.di.modules.PackagesModule;
 import com.kara4k.popupblocker.model.Package;
-import com.kara4k.popupblocker.presenter.MainPresenter;
-import com.kara4k.popupblocker.view.Adapters.Adapter;
+import com.kara4k.popupblocker.presenter.PackagesPresenter;
+import com.kara4k.popupblocker.view.adapters.PackagesAdapter;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
-import butterknife.BindView;
-
-public class SettingsActivity extends BaseActivity implements IMainView, SearchView.OnQueryTextListener {
+public class SettingsActivity extends BaseActivity implements IPackagesView, SearchView.OnQueryTextListener {
 
     @Inject
-    MainPresenter mPresenter;
+    PackagesPresenter mPresenter;
 
-    Adapter mAdapter;
-
-    @BindView(R.id.recycler_view)
-    RecyclerView mRecyclerView;
+    PackagesAdapter mPackagesAdapter;
 
     private SearchView mSearchView;
 
@@ -40,8 +33,7 @@ public class SettingsActivity extends BaseActivity implements IMainView, SearchV
     @Override
     protected void onViewReady() {
         super.onViewReady();
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mRecyclerView.setAdapter(mAdapter = new Adapter(mPresenter));
+        mRecyclerView.setAdapter(mPackagesAdapter = new PackagesAdapter(mPresenter));
         mPresenter.onStart();
     }
 
@@ -55,7 +47,7 @@ public class SettingsActivity extends BaseActivity implements IMainView, SearchV
 
     @Override
     public void setList(List<Package> packages) {
-        mAdapter.setList(packages);
+        mPackagesAdapter.setList(packages);
     }
 
     @Override
@@ -70,7 +62,7 @@ public class SettingsActivity extends BaseActivity implements IMainView, SearchV
 
     @Override
     public void updatePackageView(int position) {
-        mAdapter.setSelected(position);
+        mPackagesAdapter.setSelected(position);
     }
 
     @Override
@@ -88,6 +80,9 @@ public class SettingsActivity extends BaseActivity implements IMainView, SearchV
         switch (item.getItemId()) {
             case R.id.menu_item_toggle_system:
                 mPresenter.toggleSysVisibility();
+                break;
+            case R.id.menu_item_edit_words:
+                startActivity(WordsActivity.newIntent(this));
                 break;
         }
         return super.onOptionsItemSelected(item);

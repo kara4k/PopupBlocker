@@ -18,6 +18,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".view.SettingsActivity"/>
+        <activity android:name=".view.WordsActivity"/>
 
         <service
             android:name=".service.PopupService"

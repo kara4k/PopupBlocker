@@ -6,7 +6,7 @@ import android.support.annotation.Nullable;
 
 import com.kara4k.popupblocker.R;
 import com.kara4k.popupblocker.model.Package;
-import com.kara4k.popupblocker.view.IMainView;
+import com.kara4k.popupblocker.view.IPackagesView;
 
 import java.util.List;
 
@@ -19,21 +19,21 @@ import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
-public class MainPresenter implements SingleObserver<List<Package>> {
+public class PackagesPresenter implements SingleObserver<List<Package>> {
 
     @Inject
-    IMainView mMainView;
+    IPackagesView mMainView;
     @Inject
     Context mContext;
     @Inject
     PackagesProvider mPackagesProvider;
 
     private List<Package> mList;
-    private boolean mIsShowSystem = true;
+    private boolean mIsShowSystem;
 
 
     @Inject
-    public MainPresenter() {
+    public PackagesPresenter() {
 
     }
 
