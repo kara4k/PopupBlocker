@@ -2,4 +2,7 @@
     <string name="app_name">PopupBlocker</string>
     <string name="service_description">Popup Blocker is a service that helps to close annoying
         dialog windows automatically</string>
+    <string name="dialog_loading">Loading</string>
+    <string name="menu_item_toggle_system">Toggle system</string>
+    <string name="menu_item_search">Search</string>
 </resources>

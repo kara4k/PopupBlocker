@@ -1,8 +1,10 @@
 package com.kara4k.popupblocker.di.modules;
 
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
+
+import com.kara4k.popupblocker.model.DaoMaster;
+
+import org.greenrobot.greendao.database.Database;
 
 import javax.inject.Singleton;
 
@@ -26,8 +28,10 @@ public class AppModule {
 
     @Provides
     @Singleton
-    SharedPreferences provideSharedPrefs() {
-        return PreferenceManager.getDefaultSharedPreferences(mContext);
+    Database provideDatabase(Context context) {
+        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(context, "database");
+        return helper.getWritableDb();
     }
+
 
 }

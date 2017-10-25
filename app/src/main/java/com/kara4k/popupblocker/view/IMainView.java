@@ -12,4 +12,6 @@ public interface IMainView {
     void onShowDialog(String message);
 
     void onHideDialog();
+
+    void updatePackageView(int position);
 }

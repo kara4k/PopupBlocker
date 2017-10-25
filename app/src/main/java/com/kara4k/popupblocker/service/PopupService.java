@@ -5,6 +5,7 @@ import android.accessibilityservice.AccessibilityService;
 import android.accessibilityservice.AccessibilityServiceInfo;
 import android.util.Log;
 import android.view.accessibility.AccessibilityEvent;
+import android.view.accessibility.AccessibilityNodeInfo;
 
 public class PopupService extends AccessibilityService {
 
@@ -24,7 +25,10 @@ public class PopupService extends AccessibilityService {
         final int eventType = event.getEventType();
         Log.e("PopupService", "onAccessibilityEvent: " + event.getText().toString());
         Log.e("PopupService", "onAccessibilityEvent: " + event.toString());
-        Log.e("PopupService", "onAccessibilityEvent: " + event.getEventType());
+        AccessibilityNodeInfo source = event.getSource();
+        if (source != null) {
+            Log.e("PopupService", "onAccessibilityEvent: " + source.getText());
+        }
 
         if (event.getClassName().toString().contains("AlertDialog") && event.getText().toString().toLowerCase().contains("sort")) {
             performGlobalAction(GLOBAL_ACTION_BACK);

@@ -1,9 +1,10 @@
 package com.kara4k.popupblocker.di;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 
 import com.kara4k.popupblocker.di.modules.AppModule;
+
+import org.greenrobot.greendao.database.Database;
 
 import javax.inject.Singleton;
 
@@ -16,6 +17,5 @@ public interface AppComponent {
 
     Context shareContext();
 
-    SharedPreferences sharePreferences();
-
+    Database shareDatabase();
 }

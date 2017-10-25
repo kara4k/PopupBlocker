@@ -11,21 +11,22 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.kara4k.popupblocker.R;
+import com.kara4k.popupblocker.presenter.MainPresenter;
 import com.kara4k.popupblocker.model.Package;
 
 import java.util.List;
-
-import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.Holder> {
 
-    List<Package> mList;
+    MainPresenter mPresenter;
 
-    @Inject
-    public Adapter() {
+    private List<Package> mList;
+
+    public Adapter(MainPresenter mainPresenter) {
+        mPresenter = mainPresenter;
     }
 
     @Override
@@ -50,31 +51,51 @@ public class Adapter extends RecyclerView.Adapter<Adapter.Holder> {
         notifyDataSetChanged();
     }
 
-    class Holder extends RecyclerView.ViewHolder {
+    public void setSelected(int position) {
+        notifyItemChanged(position);
+    }
 
-        @BindView(R.id.app_name) TextView mAppNameTV;
-        @BindView(R.id.package_name) TextView mPackageNameTV;
-        @BindView(R.id.icon) ImageView mIconIV;
-        @BindView(R.id.checkbox)CheckBox mSelectedCB;
+    class Holder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
+        @BindView(R.id.app_name)
+        TextView mAppNameTextView;
+        @BindView(R.id.package_name)
+        TextView mPackageNameTextView;
+        @BindView(R.id.icon)
+        ImageView mIconImageView;
+        @BindView(R.id.checkbox)
+        CheckBox mCheckbox;
+
+        private Package mPackage;
 
         public Holder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+            itemView.setOnClickListener(this);
         }
 
         public void onBind(Package aPackage) {
-            mAppNameTV.setText(aPackage.getAppName());
-            mPackageNameTV.setText(aPackage.getPackageName());
-            mIconIV.setImageDrawable(aPackage.getIcon());
+            mPackage = aPackage;
 
+            mAppNameTextView.setText(aPackage.getAppName());
+            mPackageNameTextView.setText(aPackage.getPackageName());
+            mIconImageView.setImageDrawable(aPackage.getIcon());
+            mCheckbox.setChecked(aPackage.isSelected());
             setTextColor(aPackage.getSystem());
-            // TODO: 16.10.2017 setChecked
         }
 
         private void setTextColor(int system) {
             int textColor = system == 0 ? Color.BLACK : Color.RED;
-            mAppNameTV.setTextColor(textColor);
-            mPackageNameTV.setTextColor(textColor);
+
+            mAppNameTextView.setTextColor(textColor);
+            mPackageNameTextView.setTextColor(textColor);
+        }
+
+        @Override
+        public void onClick(View v) {
+            boolean isSelected = mList.get(getAdapterPosition()).isSelected();
+
+            mPresenter.setSelected(mPackage, getAdapterPosition(), !isSelected);
         }
     }
 
