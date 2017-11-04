@@ -5,13 +5,10 @@ import com.kara4k.popupblocker.model.Package;
 
 import java.util.List;
 
-public interface IPackagesView {
-
-    void setList(List<Package> packages);
+public interface IPackagesView extends IListView<List<Package>>{
 
     void onShowDialog(String message);
 
     void onHideDialog();
 
-    void updatePackageView(int position);
 }

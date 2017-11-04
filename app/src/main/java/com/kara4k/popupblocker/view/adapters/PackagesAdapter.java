@@ -1,6 +1,7 @@
 package com.kara4k.popupblocker.view.adapters;
 
 
+import android.content.Context;
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,13 +12,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.kara4k.popupblocker.R;
-import com.kara4k.popupblocker.presenter.PackagesPresenter;
 import com.kara4k.popupblocker.model.Package;
+import com.kara4k.popupblocker.presenter.impl.PackagesPresenter;
+import com.kara4k.popupblocker.view.activities.RulesListActivity;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class PackagesAdapter extends RecyclerView.Adapter<PackagesAdapter.Holder> {
 
@@ -49,10 +52,6 @@ public class PackagesAdapter extends RecyclerView.Adapter<PackagesAdapter.Holder
     public void setList(List<Package> list) {
         mList = list;
         notifyDataSetChanged();
-    }
-
-    public void setSelected(int position) {
-        notifyItemChanged(position);
     }
 
     class Holder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -91,11 +90,15 @@ public class PackagesAdapter extends RecyclerView.Adapter<PackagesAdapter.Holder
             mPackageNameTextView.setTextColor(textColor);
         }
 
+        @OnClick(R.id.checkbox)
+        void onCheckBoxClick(CheckBox checkBox) {
+            mPresenter.setSelected(mPackage, checkBox.isChecked());
+        }
+
         @Override
         public void onClick(View v) {
-            boolean isSelected = mList.get(getAdapterPosition()).isSelected();
-
-            mPresenter.setSelected(mPackage, getAdapterPosition(), !isSelected);
+            Context context = itemView.getContext();
+            context.startActivity(RulesListActivity.newIntent(context, mPackage.getPackageName()));
         }
     }
 

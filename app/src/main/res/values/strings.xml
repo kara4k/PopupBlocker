@@ -1,10 +1,11 @@
 <resources>
-    <string name="app_name">PopupBlocker</string>
+    <string name="app_name">Popup Blocker</string>
     <string name="service_description">Popup Blocker is a service that helps to close annoying
         dialog windows automatically</string>
     <string name="dialog_loading">Loading</string>
     <string name="menu_item_toggle_system">Toggle system</string>
     <string name="menu_item_search">Search</string>
-    <string name="menu_item_edit_words">Edit words</string>
-    <string name="menu_item_clear">menu_item_clear</string>
+    <string name="rule_search">Search: %1$s</string>
+    <string name="rule_send_backpress">Send backpress</string>
+    <string name="rule_press">Press: %1$s</string>
 </resources>

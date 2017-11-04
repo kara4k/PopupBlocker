@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.kara4k.popupblocker.di.modules.AppModule;
 import com.kara4k.popupblocker.model.DaoSession;
+import com.kara4k.popupblocker.service.PopupService;
 
 import javax.inject.Singleton;
 
@@ -17,4 +18,6 @@ public interface AppComponent {
     Context shareContext();
 
     DaoSession shareDaoSession();
+
+    void injectService(PopupService service);
 }

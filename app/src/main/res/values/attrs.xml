@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ItemView">
+        <attr name="title_text" format="string" />
+        <attr name="summary_text" format="string" />
+        <attr name="check_box_is_visibile" format="boolean" />
+        <attr name="is_checked" format="boolean" />
+        <attr name="is_checkable" format="boolean" />
+        <attr name="icon_visibility" format="boolean" />
+        <attr name="photo_visibility" format="boolean" />
+        <attr name="icon_src" format="reference|integer" />
+        <attr name="photo_src" format="reference|integer" />
+    </declare-styleable>
+
+</resources>

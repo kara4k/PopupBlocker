@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusableInTouchMode="true">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen_default"
+            android:orientation="vertical"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dimen_default"
+                    android:layout_marginTop="@dimen/dimen_default"
+                    android:text="Search:"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"
+                    />
+
+                <EditText
+                    android:id="@+id/search_edit_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dimen_default"
+                    android:layout_marginRight="@dimen/dimen_default"
+                    android:layout_marginTop="@dimen/dimen_default"
+                    android:background="@android:color/transparent"
+                    tools:ignore="TextFields"/>
+            </LinearLayout>
+
+            <View
+                style="@style/Divider"
+                android:layout_marginLeft="@dimen/dimen_default"
+                android:layout_marginRight="@dimen/dimen_default"/>
+
+
+            <LinearLayout
+                android:id="@+id/press_layout"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_gravity="fill"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dimen_default"
+                    android:layout_marginTop="@dimen/dimen_default"
+                    android:text="Press:"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"
+                    />
+
+                <EditText
+                    android:id="@+id/press_edit_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dimen_default"
+                    android:layout_marginRight="@dimen/dimen_default"
+                    android:layout_marginTop="@dimen/dimen_default"
+                    android:background="@android:color/transparent"
+                    tools:ignore="TextFields"/>
+
+            </LinearLayout>
+
+            <View
+                style="@style/Divider"
+                android:layout_marginLeft="@dimen/dimen_default"
+                android:layout_marginRight="@dimen/dimen_default"/>
+
+            <com.kara4k.popupblocker.view.custom.ItemView
+                android:id="@+id/back_press_item_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:check_box_is_visibile="true"
+                app:icon_visibility="false"
+                app:is_checkable="true"
+                app:summary_text="Emulate backpress on dialog"
+                app:title_text="Backpress"/>
+
+
+            <View
+                style="@style/Divider"
+                android:layout_marginBottom="100dp"
+                android:layout_marginLeft="@dimen/dimen_default"
+                android:layout_marginRight="@dimen/dimen_default"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_done_white_24dp"/>
+
+
+</android.support.design.widget.CoordinatorLayout>

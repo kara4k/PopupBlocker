@@ -10,41 +10,15 @@ import org.greenrobot.greendao.annotation.Transient;
 import org.greenrobot.greendao.DaoException;
 
 @Entity(active = true, nameInDb = "packages")
-public class Package {
+public class Package  {
 
     public Package() {
     }
 
-    public Package(String appName, String packageName, int system, Drawable icon) {
-        this.appName = appName;
-        this.packageName = packageName;
-        this.system = system;
-        this.icon = icon;
-    }
-
-
-
-    public Package(Long id, String appName, String packageName, int system, Drawable icon, boolean isSelected) {
-        this.id = id;
-        this.appName = appName;
-        this.packageName = packageName;
-        this.system = system;
-        this.icon = icon;
-        this.isSelected = isSelected;
-    }
-
-    @Generated(hash = 163982660)
-    public Package(Long id, String appName, String packageName, int system) {
-        this.id = id;
-        this.appName = appName;
-        this.packageName = packageName;
-        this.system = system;
-    }
-
+  
     @Id
-    private Long id;
-    private String appName;
     private String packageName;
+    private String appName;
     private int system;
     @Transient
     private Drawable icon;
@@ -56,6 +30,22 @@ public class Package {
     /** Used for active entity operations. */
     @Generated(hash = 40750146)
     private transient PackageDao myDao;
+
+
+
+    public Package(String appName, String pName, int system, Drawable icon) {
+        this.appName = appName;
+        this.packageName = pName;
+        this.system = system;
+        this.icon = icon;
+    }
+
+    @Generated(hash = 2097718120)
+    public Package(String packageName, String appName, int system) {
+        this.packageName = packageName;
+        this.appName = appName;
+        this.system = system;
+    }
 
     public String getAppName() {
         return appName;
@@ -95,14 +85,6 @@ public class Package {
 
     public void setSelected(boolean selected) {
         isSelected = selected;
-    }
-
-    public Long getId() {
-        return this.id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     /**

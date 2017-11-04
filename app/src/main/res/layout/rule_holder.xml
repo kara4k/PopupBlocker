@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:paddingTop="@dimen/dimen_default"
+                android:paddingLeft="@dimen/dimen_default"
+                android:paddingRight="@dimen/dimen_default"
+    >
+
+    <TextView
+        android:id="@+id/contain_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@+id/delete_image_view"
+        android:textColor="@android:color/black"/>
+
+    <TextView
+        android:id="@+id/send_back_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/contain_text_view"
+        android:layout_marginTop="5dp"
+        android:text="@string/rule_send_backpress"
+        android:layout_toLeftOf="@+id/delete_image_view"
+        android:textColor="@android:color/black"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/press_text_view"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/send_back_text_view"
+        android:layout_marginTop="5dp"
+        android:layout_toLeftOf="@+id/delete_image_view"
+        android:textColor="@android:color/black"/>
+
+    <ImageView
+        android:id="@+id/delete_image_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dimen_default"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:padding="5dp"
+        android:src="@drawable/ic_delete_black_24dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_below="@id/press_text_view"
+        android:layout_height="1dp"
+        style="@style/Divider"/>
+
+
+</RelativeLayout>

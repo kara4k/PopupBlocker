@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <accessibility-service
-    android:accessibilityEventTypes="typeWindowStateChanged|typeViewFocused|typeViewClicked|typeViewSelected|typeViewTextChanged"
+    android:accessibilityEventTypes="typeWindowStateChanged"
     android:accessibilityFeedbackType="feedbackGeneric"
     android:notificationTimeout="1"
-    android:settingsActivity=".view.SettingsActivity"
+    android:settingsActivity=".view.activities.PackagesListActivity"
     android:canRetrieveWindowContent="true"
     android:description="@string/service_description"
     xmlns:android="http://schemas.android.com/apk/res/android"/>
 
-    <!--android:packageNames="com.example.android.myFirstApp, com.example.android.mySecondApp"-->

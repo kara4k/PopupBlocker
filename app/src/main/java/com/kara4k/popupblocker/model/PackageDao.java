@@ -13,7 +13,7 @@ import org.greenrobot.greendao.database.DatabaseStatement;
 /** 
  * DAO for table "packages".
 */
-public class PackageDao extends AbstractDao<Package, Long> {
+public class PackageDao extends AbstractDao<Package, String> {
 
     public static final String TABLENAME = "packages";
 
@@ -22,10 +22,9 @@ public class PackageDao extends AbstractDao<Package, Long> {
      * Can be used for QueryBuilder and for referencing column names.
      */
     public static class Properties {
-        public final static Property Id = new Property(0, Long.class, "id", true, "_id");
+        public final static Property PackageName = new Property(0, String.class, "packageName", true, "PACKAGE_NAME");
         public final static Property AppName = new Property(1, String.class, "appName", false, "APP_NAME");
-        public final static Property PackageName = new Property(2, String.class, "packageName", false, "PACKAGE_NAME");
-        public final static Property System = new Property(3, int.class, "system", false, "SYSTEM");
+        public final static Property System = new Property(2, int.class, "system", false, "SYSTEM");
     }
 
     private DaoSession daoSession;
@@ -44,10 +43,9 @@ public class PackageDao extends AbstractDao<Package, Long> {
     public static void createTable(Database db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"packages\" (" + //
-                "\"_id\" INTEGER PRIMARY KEY ," + // 0: id
+                "\"PACKAGE_NAME\" TEXT PRIMARY KEY NOT NULL ," + // 0: packageName
                 "\"APP_NAME\" TEXT," + // 1: appName
-                "\"PACKAGE_NAME\" TEXT," + // 2: packageName
-                "\"SYSTEM\" INTEGER NOT NULL );"); // 3: system
+                "\"SYSTEM\" INTEGER NOT NULL );"); // 2: system
     }
 
     /** Drops the underlying database table. */
@@ -60,42 +58,32 @@ public class PackageDao extends AbstractDao<Package, Long> {
     protected final void bindValues(DatabaseStatement stmt, Package entity) {
         stmt.clearBindings();
  
-        Long id = entity.getId();
-        if (id != null) {
-            stmt.bindLong(1, id);
+        String packageName = entity.getPackageName();
+        if (packageName != null) {
+            stmt.bindString(1, packageName);
         }
  
         String appName = entity.getAppName();
         if (appName != null) {
             stmt.bindString(2, appName);
         }
- 
-        String packageName = entity.getPackageName();
-        if (packageName != null) {
-            stmt.bindString(3, packageName);
-        }
-        stmt.bindLong(4, entity.getSystem());
+        stmt.bindLong(3, entity.getSystem());
     }
 
     @Override
     protected final void bindValues(SQLiteStatement stmt, Package entity) {
         stmt.clearBindings();
  
-        Long id = entity.getId();
-        if (id != null) {
-            stmt.bindLong(1, id);
+        String packageName = entity.getPackageName();
+        if (packageName != null) {
+            stmt.bindString(1, packageName);
         }
  
         String appName = entity.getAppName();
         if (appName != null) {
             stmt.bindString(2, appName);
         }
- 
-        String packageName = entity.getPackageName();
-        if (packageName != null) {
-            stmt.bindString(3, packageName);
-        }
-        stmt.bindLong(4, entity.getSystem());
+        stmt.bindLong(3, entity.getSystem());
     }
 
     @Override
@@ -105,39 +93,36 @@ public class PackageDao extends AbstractDao<Package, Long> {
     }
 
     @Override
-    public Long readKey(Cursor cursor, int offset) {
-        return cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0);
+    public String readKey(Cursor cursor, int offset) {
+        return cursor.isNull(offset + 0) ? null : cursor.getString(offset + 0);
     }    
 
     @Override
     public Package readEntity(Cursor cursor, int offset) {
         Package entity = new Package( //
-            cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
+            cursor.isNull(offset + 0) ? null : cursor.getString(offset + 0), // packageName
             cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // appName
-            cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // packageName
-            cursor.getInt(offset + 3) // system
+            cursor.getInt(offset + 2) // system
         );
         return entity;
     }
      
     @Override
     public void readEntity(Cursor cursor, Package entity, int offset) {
-        entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
+        entity.setPackageName(cursor.isNull(offset + 0) ? null : cursor.getString(offset + 0));
         entity.setAppName(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
-        entity.setPackageName(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
-        entity.setSystem(cursor.getInt(offset + 3));
+        entity.setSystem(cursor.getInt(offset + 2));
      }
     
     @Override
-    protected final Long updateKeyAfterInsert(Package entity, long rowId) {
-        entity.setId(rowId);
-        return rowId;
+    protected final String updateKeyAfterInsert(Package entity, long rowId) {
+        return entity.getPackageName();
     }
     
     @Override
-    public Long getKey(Package entity) {
+    public String getKey(Package entity) {
         if(entity != null) {
-            return entity.getId();
+            return entity.getPackageName();
         } else {
             return null;
         }
@@ -145,7 +130,7 @@ public class PackageDao extends AbstractDao<Package, Long> {
 
     @Override
     public boolean hasKey(Package entity) {
-        return entity.getId() != null;
+        return entity.getPackageName() != null;
     }
 
     @Override
