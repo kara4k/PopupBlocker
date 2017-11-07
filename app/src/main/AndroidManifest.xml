@@ -19,9 +19,12 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".view.activities.PackagesListActivity"/>
-        <activity android:name=".view.activities.RulesListActivity"/>
-        <activity android:name=".view.activities.RuleCreatorActivity"/>
+        <activity android:name=".view.activities.PackagesListActivity"
+            android:label="@string/activity_label_packages"/>
+        <activity android:name=".view.activities.RulesListActivity"
+            android:label="@string/activity_label_events"/>
+        <activity android:name=".view.activities.RuleCreatorActivity"
+            android:label="@string/activity_label_edit"/>
 
         <service
             android:name=".service.PopupService"

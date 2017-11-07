@@ -91,7 +91,6 @@ public class PopupService extends AccessibilityService {
                 break;
             }
         }
-
     }
 
     /**

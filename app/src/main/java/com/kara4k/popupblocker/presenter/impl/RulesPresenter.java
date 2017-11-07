@@ -28,6 +28,7 @@ public class RulesPresenter extends ListPresenter<List<Rule>, IRulesView> {
 
     /**
      * Get rules from database
+     *
      * @param packageName Name of package
      * @return List of rules belongs to package
      */

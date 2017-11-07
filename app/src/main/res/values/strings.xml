@@ -8,4 +8,7 @@
     <string name="rule_search">Search: %1$s</string>
     <string name="rule_send_backpress">Send backpress</string>
     <string name="rule_press">Press: %1$s</string>
+    <string name="activity_label_edit">Edit</string>
+    <string name="activity_label_packages">Packages</string>
+    <string name="activity_label_events">Events</string>
 </resources>

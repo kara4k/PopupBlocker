@@ -48,6 +48,7 @@ public class PackagesPresenter extends ListPresenter<List<Package>, IPackagesVie
 
     /**
      * Show sorted list of packages on device
+     *
      * @param query Packages with text in application name or package name will be shown
      * @param isShowSystem Show or not system packages
      */

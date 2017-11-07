@@ -63,8 +63,7 @@ public class PackagesProvider {
         int bySelection = Boolean.compare(o2.isSelected(), o1.isSelected());
 
         if (bySelection == 0) {
-            int byName = o1.getAppName().toLowerCase()
-                    .compareToIgnoreCase(o2.getAppName().toLowerCase());
+            int byName = o1.getAppName().compareToIgnoreCase(o2.getAppName());
             return byName;
         }
 
@@ -73,6 +72,7 @@ public class PackagesProvider {
 
     /**
      * Map system package object to view object
+     *
      * @param packageInfo package to map
      * @return mapped view object
      */
@@ -87,7 +87,7 @@ public class PackagesProvider {
     }
 
     /**
-     * Set Package variable isSelected, depends on if package stored in database
+     * Set Package variable isSelected, depends on if a package stored in database
      *
      * @param aPackage package to check
      * @return Package with defined variable isSelected
@@ -104,7 +104,8 @@ public class PackagesProvider {
     }
 
     /**
-     * Update database depends on if package selected
+     * Update database depends on if a package is selected
+     *
      * @param aPackage package to update
      * @param selected used to determine insert or delete package
      */
