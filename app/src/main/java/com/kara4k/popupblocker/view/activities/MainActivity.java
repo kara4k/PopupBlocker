@@ -17,8 +17,11 @@ public class MainActivity extends AppCompatActivity {
          * For fast debug
          */
         Intent intent = new Intent(android.provider.Settings.ACTION_ACCESSIBILITY_SETTINGS);
-        startActivity(intent);
+        startActivityForResult(intent, 0);
     }
 
-
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        finish();
+    }
 }

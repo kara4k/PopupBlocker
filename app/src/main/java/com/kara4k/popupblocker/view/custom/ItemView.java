@@ -13,9 +13,7 @@ import android.widget.TextView;
 
 import com.kara4k.popupblocker.R;
 
-/**
- * My UberView.
- */
+
 public class ItemView extends RelativeLayout implements View.OnClickListener {
 
 

@@ -24,7 +24,7 @@ import butterknife.OnClick;
 
 public class PackagesAdapter extends RecyclerView.Adapter<PackagesAdapter.Holder> {
 
-    PackagesPresenter mPresenter;
+    private PackagesPresenter mPresenter;
 
     private List<Package> mList;
 
